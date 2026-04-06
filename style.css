@@ -154,6 +154,12 @@ select {
   font-size: 0.92rem;
 }
 
+#pedidosActivosCount {
+  background: #dc2626;
+  color: #fff;
+  border-color: #dc2626;
+}
+
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -405,6 +411,57 @@ button:disabled {
   color: #fff;
 }
 
+.status-menu-wrap {
+  position: relative;
+}
+
+.status-trigger {
+  min-width: 144px;
+  padding: 10px 14px;
+}
+
+.status-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 156px;
+  padding: 8px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 20px 38px rgba(15, 23, 42, 0.14);
+  display: none;
+  z-index: 20;
+}
+
+.status-dropdown.is-open {
+  display: grid;
+  gap: 6px;
+}
+
+.status-option {
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 14px;
+  font-weight: 700;
+}
+
+.status-option.preparacion {
+  background: rgba(245, 158, 11, 0.14);
+  color: #9a6700;
+}
+
+.status-option.despachada {
+  background: rgba(52, 199, 89, 0.16);
+  color: #14833b;
+}
+
+.status-option.olvidado {
+  background: #dc2626;
+  color: #fff;
+}
+
 .pedidos-list {
   display: grid;
   gap: 14px;
@@ -612,9 +669,13 @@ button:disabled {
   .section-heading,
   .dashboard-toolbar,
   .dashboard-grid,
-  .pedido-header,
   .pedido-actions {
     grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pedido-header {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -631,6 +692,17 @@ button:disabled {
   .primary-button,
   .secondary-button {
     width: 100%;
+  }
+
+  .status-trigger,
+  .status-dropdown {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .status-dropdown {
+    position: static;
+    margin-top: 10px;
   }
 
   .pedidos-scroll,
